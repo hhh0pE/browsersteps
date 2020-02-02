@@ -7,7 +7,7 @@ This package provides Cucumber steps for Browser automation.
 
 ## Installation
 
-    go get github.com/llonchj/browsersteps
+    go get github.com/hhh0pE/browsersteps
 
 ## Usage
 

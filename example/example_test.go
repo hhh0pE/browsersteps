@@ -9,7 +9,7 @@ import (
 	"github.com/DATA-DOG/godog"
 	"github.com/tebeka/selenium"
 
-	"github.com/llonchj/browsersteps"
+	"github.com/hhh0pE/browsersteps"
 )
 
 func iWaitFor(amount int, unit string) error {
