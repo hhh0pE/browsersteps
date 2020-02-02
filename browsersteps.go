@@ -8,6 +8,7 @@ import (
 	"net/url"
 	"os"
 	"path/filepath"
+	"time"
 
 	"github.com/DATA-DOG/godog"
 	"github.com/tebeka/selenium"
@@ -20,6 +21,8 @@ type BrowserSteps struct {
 	DefaultURL     string
 	URL            *url.URL
 	ScreenshotPath string
+	Timeout        time.Duration
+	PingDuration   time.Duration
 }
 
 /*SetBaseURL sets the absolute URL used to complete relative URLs*/
@@ -117,6 +120,8 @@ func (b *BrowserSteps) buildSteps(s *godog.Suite) {
 //NewBrowserSteps starts a new BrowserSteps instance.
 func NewBrowserSteps(s *godog.Suite, cap selenium.Capabilities, defaultURL string) *BrowserSteps {
 	bs := &BrowserSteps{Capabilities: cap, DefaultURL: defaultURL, ScreenshotPath: os.Getenv("SCREENSHOT_PATH")}
+	bs.Timeout = time.Second * 2
+	bs.PingDuration = time.Second / 10
 	bs.buildSteps(s)
 
 	s.BeforeScenario(bs.BeforeScenario)
