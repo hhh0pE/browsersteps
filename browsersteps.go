@@ -35,43 +35,53 @@ func (b *BrowserSteps) SetBaseURL(url *url.URL) error {
 }
 
 func (b *BrowserSteps) iWriteTo(text, selector, by string) error {
-	// Click the element
-	element, err := b.GetWebDriver().FindElement(by, selector)
-	if err != nil {
-		return err
-	}
+	return RunWithTimeout(func() error {
+		// Click the element
+		element, err := b.GetWebDriver().FindElement(by, selector)
+		if err != nil {
+			return err
+		}
 
-	err = element.Clear()
-	if err != nil {
-		return err
-	}
-	return element.SendKeys(text)
+		err = element.Clear()
+		if err != nil {
+			return err
+		}
+		return element.SendKeys(text)
+	}, b.Timeout, b.PingDuration)
+
 }
 
 func (b *BrowserSteps) iClick(selector, by string) error {
-	// Submit the element
-	element, err := b.GetWebDriver().FindElement(by, selector)
-	if err != nil {
-		return err
-	}
-	return element.Click()
+	return RunWithTimeout(func() error {
+		// Submit the element
+		element, err := b.GetWebDriver().FindElement(by, selector)
+		if err != nil {
+			return err
+		}
+		return element.Click()
+	}, b.Timeout, b.PingDuration)
 }
 
 func (b *BrowserSteps) iSubmit(selector, by string) error {
-	// Submit the element
-	element, err := b.GetWebDriver().FindElement(by, selector)
-	if err != nil {
-		return err
-	}
-	return element.Submit()
+	return RunWithTimeout(func() error {
+		// Submit the element
+		element, err := b.GetWebDriver().FindElement(by, selector)
+		if err != nil {
+			return err
+		}
+		return element.Submit()
+	}, b.Timeout, b.PingDuration)
 }
 
 func (b *BrowserSteps) iMoveTo(selector, by string) error {
-	element, err := b.GetWebDriver().FindElement(by, selector)
-	if err != nil {
-		return err
-	}
-	return element.MoveTo(0, 0)
+	return RunWithTimeout(func() error {
+		element, err := b.GetWebDriver().FindElement(by, selector)
+		if err != nil {
+			return err
+		}
+		return element.MoveTo(0, 0)
+	}, b.Timeout, b.PingDuration)
+
 }
 
 //BeforeScenario is executed before each scenario
