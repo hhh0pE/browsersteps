@@ -3,6 +3,7 @@ package browsersteps
 import (
 	"errors"
 	"fmt"
+	"github.com/DATA-DOG/godog/gherkin"
 	"io/ioutil"
 	"log"
 	"net/url"
@@ -96,7 +97,10 @@ func (b *BrowserSteps) BeforeScenario(a interface{}) {
 //AfterScenario is executed after each scenario
 func (b *BrowserSteps) AfterScenario(a interface{}, err error) {
 	if err != nil && b.ScreenshotPath != "" {
-		filename := fmt.Sprintf("FAILED STEP - %s.png", err.Error())
+		var filename = "FAILED STEP.png"
+		if gerkinDef, ok := a.(*gherkin.Scenario); ok {
+			filename = "FAILED STEP -- " + gerkinDef.Name + ".png"
+		}
 
 		buff, err := b.GetWebDriver().Screenshot()
 		if err != nil {
@@ -107,7 +111,9 @@ func (b *BrowserSteps) AfterScenario(a interface{}, err error) {
 			os.MkdirAll(b.ScreenshotPath, 0755)
 		}
 		pathname := filepath.Join(b.ScreenshotPath, filename)
-		ioutil.WriteFile(pathname, buff, 0644)
+		if write_err := ioutil.WriteFile(pathname, buff, 0644); write_err != nil {
+			fmt.Errorf("AfterScenario saving screenshot error: %s", write_err.Error())
+		}
 	}
 	b.GetWebDriver().Quit()
 }
