@@ -120,8 +120,8 @@ func (b *BrowserSteps) buildSteps(s *godog.Suite) {
 //NewBrowserSteps starts a new BrowserSteps instance.
 func NewBrowserSteps(s *godog.Suite, cap selenium.Capabilities, defaultURL string) *BrowserSteps {
 	bs := &BrowserSteps{Capabilities: cap, DefaultURL: defaultURL, ScreenshotPath: os.Getenv("SCREENSHOT_PATH")}
-	bs.Timeout = time.Second * 2
-	bs.PingDuration = time.Second / 10
+	bs.Timeout = time.Second * 4
+	bs.PingDuration = time.Second / 5
 	bs.buildSteps(s)
 
 	s.BeforeScenario(bs.BeforeScenario)
