@@ -1,6 +1,6 @@
 # BrowserSteps
 
-[![Build Status](https://travis-ci.org/llonchj/browsersteps.svg?branch=master)](https://travis-ci.org/llonchj/browsersteps)
+[![Build Status](https://travis-ci.org/hhh0pE/browsersteps.svg?branch=master)](https://travis-ci.org/llonchj/browsersteps)
 
 
 This package provides Cucumber steps for Browser automation.
@@ -23,4 +23,4 @@ This package provides Cucumber steps for Browser automation.
 * [DATA-DOG/godog](http://github.com/DATA-DOG/godog) project for Cucumber implementation for Golang.
 * [Browserstack](http://browserstack.com) for providing support and automation to this project.
 
-<img src="https://cdn.rawgit.com/llonchj/browsersteps/da8ce44d/images/browserstack.svg" height="48">
+<img src="https://cdn.rawgit.com/hhh0pE/browsersteps/da8ce44d/images/browserstack.svg" height="48">
