@@ -1,6 +1,6 @@
 /*
 Package browsersteps provides browser automation Cucumber Steps
-using https://github.com/DATA-DOG/godog and https://github.com/tebeka/selenium.
+using https://github.com/cucumber/godog and https://github.com/tebeka/selenium.
 
 Provided Steps
 

@@ -2,7 +2,7 @@ package browsersteps
 
 import (
 	"fmt"
-	"github.com/DATA-DOG/godog"
+	"github.com/cucumber/godog"
 )
 
 func (b *BrowserSteps) iShouldBeIn(browseURL string) error {

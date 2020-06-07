@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/DATA-DOG/godog"
+	"github.com/cucumber/godog"
 	"github.com/tebeka/selenium"
 )
 

@@ -4,7 +4,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/DATA-DOG/godog"
+	"github.com/cucumber/godog"
 )
 
 const (

@@ -14,7 +14,7 @@ import (
 	"net/http/httptest"
 	"net/url"
 
-	"github.com/DATA-DOG/godog"
+	"github.com/cucumber/godog"
 	"github.com/tebeka/selenium"
 )
 

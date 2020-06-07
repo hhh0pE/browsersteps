@@ -1,6 +1,6 @@
 package browsersteps
 
-import "github.com/DATA-DOG/godog"
+import "github.com/cucumber/godog"
 
 func (b *BrowserSteps) buildProcessSteps(s *godog.Suite) {
 	s.Step(`^I accept alert$`, func() error { return b.GetWebDriver().AcceptAlert() })
