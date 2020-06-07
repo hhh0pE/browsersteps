@@ -3,6 +3,7 @@ package browsersteps
 import (
 	"errors"
 	"fmt"
+	"github.com/cucumber/messages-go/v10"
 	"io/ioutil"
 	"log"
 	"net/url"
@@ -75,7 +76,7 @@ func (b *BrowserSteps) iMoveTo(selector, by string) error {
 }
 
 //BeforeScenario is executed before each scenario
-func (b *BrowserSteps) BeforeScenario(a interface{}) {
+func (b *BrowserSteps) BeforeScenario(a *messages.Pickle) {
 	var err error
 	b.wd, err = selenium.NewRemote(b.Capabilities, b.DefaultURL)
 	if err != nil {
@@ -84,7 +85,7 @@ func (b *BrowserSteps) BeforeScenario(a interface{}) {
 }
 
 //AfterScenario is executed after each scenario
-func (b *BrowserSteps) AfterScenario(a interface{}, err error) {
+func (b *BrowserSteps) AfterScenario(m *messages.Pickle, err error) {
 	if err != nil && b.ScreenshotPath != "" {
 		filename := fmt.Sprintf("FAILED STEP - %s.png", err.Error())
 

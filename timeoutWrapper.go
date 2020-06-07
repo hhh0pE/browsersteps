@@ -2,7 +2,6 @@ package browsersteps
 
 import (
 	"context"
-	"fmt"
 	"github.com/pkg/errors"
 	"time"
 )
